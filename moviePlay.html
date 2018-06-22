@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>hivideo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+     <script src="https://unpkg.com/video.js/dist/video.js"></script>
+        <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+
+</head>
+<body>
+    <div align="center">
+        
+        <video id=example-video width=600 height=300 class="video-js vjs-default-skin" controls>
+          <source
+             src="http://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"
+             type="application/x-mpegURL">
+        </video>
+    </div>
+<script>
+
+</script>
+
+    <script type="text/javascript">
+        function getParameter(param)    
+        {    
+            var query = window.location.search;//获取URL地址中？后的所有字符    
+            console.log("query = " + query);
+
+            var iLen = param.length;//获取你的参数名称长度    
+            var iStart = query.indexOf(param);//获取你该参数名称的真实索引    
+            if (iStart == -1)//-1为没有该参数    
+                return "";    
+            iStart += iLen + 1;    
+            var iEnd = query.indexOf("&", iStart);//获取第二个参数的其实索引    
+            if (iEnd == -1)//只有一个参数    
+                return query.substring(iStart);//获取单个参数的参数值    
+            return query.substring(iStart, iEnd);//获取第二个参数的值    
+        }  
+
+        var player = videojs('example-video');
+   
+      window.addEventListener('load', function () {
+       
+        var address = getParameter("address");
+
+        player.src(address)
+        player.play();
+      })
+
+    </script>
+
+</body>
+</html>
