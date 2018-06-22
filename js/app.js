@@ -241,7 +241,7 @@ function cbSearchMovie(resp) {
     result = JSON.parse(result); 
     var address = result["movieAddress"];
 
-    window.open('./moviePlay.html?address='+address);
+    window.open('https://cashcinema.github.io/moviePlay.html?address='+address);
 
     console.log("address = " + address);
   }
